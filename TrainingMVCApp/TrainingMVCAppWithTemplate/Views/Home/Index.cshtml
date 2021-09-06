@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    var data = "Mydata";
+    var collection = 10;
+
+    if (data == "Mydata")
+    {
+        <h1 class="display-4">@data</h1>
+    }
+}
+@section Scripts {
+    <script src="~/js/CustomJavascript.js"></script>
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">@data.</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
