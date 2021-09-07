@@ -21,10 +21,10 @@ namespace MyMVCProject.DAL.Repository
         {
             get
             {
-                if (_joinContext == null)
-                {
-                    _joinContext = new StudentDbContext();
-                }
+                //if (_joinContext == null)
+                //{
+                //    _joinContext = new StudentDbContext();
+                //}
                 return _joinContext;
             }
         }

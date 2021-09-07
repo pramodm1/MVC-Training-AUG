@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using MyMVCProject.DAL.Repository;
+using MyFirstProject.Services.ViewModel;
 
 namespace MyFirstProject.Services.Services
 {
@@ -15,17 +16,47 @@ namespace MyFirstProject.Services.Services
     public class BooksService : IBooksService
     {
         //private readonly GenericRepository genericRepository;
-        //public BooksService(GenericRepository context)
-        //{
-        //    _context = context;
-        //}
+        public BooksService(StudentDbContext context)
+        {
+            _context = context;
+        }
+        private readonly StudentDbContext _context;
+
         public async Task<List<Books>> getAllBooks()
         {
-            using (var Context = new StudentDbContext())
+            //using (var Context = new StudentDbContext())
+            //{
+            //    return Context.Books.ToList();
+            //}
+            var data= _context.StudentInfo.Select(o => new vwStudentInfo
             {
-                return Context.Books.ToList();
-            }
+                Id = o.Id,
+                StudentName = o.Student.Name,
+                Address = o.Address,
+                ContactNumber = o.ContactNumber,
+                CreatedOn = o.CreatedOn,
+                UpdatedOn = o.UpdatedOn
+            }).ToList();
+
+            return _context.Books.ToList();
             //return new GenericRepository<Books>().GetAll().ToList();
+        }
+
+        public async Task<List<vwStudentInfo>> getAllStudentInfo()
+        {
+            
+            var data = _context.StudentInfo.Select(o => new vwStudentInfo
+            {
+                Id = o.Id,
+                StudentName = o.Student.Name,
+                Address = o.Address,
+                ContactNumber = o.ContactNumber,
+                CreatedOn = o.CreatedOn,
+                UpdatedOn = o.UpdatedOn
+            }).ToList();
+
+            return data;
+            
         }
     }
 }

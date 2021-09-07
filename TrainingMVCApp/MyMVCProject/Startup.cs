@@ -68,10 +68,15 @@ namespace MyMVCProject
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                  name: "Books",
+                  pattern: "{controller=Books}/{action=index}");
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{action=Index}/{controller=Home}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            
         }
     }
 }
