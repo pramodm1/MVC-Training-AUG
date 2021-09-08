@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMVCProject.DAL.Repository;
 using MyFirstProject.Services.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyFirstProject.Services.Services
 {
@@ -37,6 +38,7 @@ namespace MyFirstProject.Services.Services
                 CreatedOn = o.CreatedOn,
                 UpdatedOn = o.UpdatedOn
             }).ToList();
+            var data1 = _context.StudentInfo.Include("Student").Where(o => o.Student.Id == 1).FirstOrDefault();
 
             return _context.Books.ToList();
             //return new GenericRepository<Books>().GetAll().ToList();

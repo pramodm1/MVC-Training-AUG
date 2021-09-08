@@ -14,14 +14,17 @@ namespace TrainingMVCAppWithTemplate.Controllers
     {
         // GET: StudentController
         private readonly IStudentRepository _repository = null;
+        private readonly IStudentRepository _repository1 = null;
 
-        public StudentController(IStudentRepository repository)
+        public StudentController(IStudentRepository repository, IStudentRepository repository1)
         {
             _repository = repository;
+            _repository1 = repository1;
         }
         public ActionResult Index()
         {
-            //StudentRepository studentRepository = new StudentRepository();
+          //StudentRepository studentRepository = new StudentRepository();
+          // var result = studentRepository.getAllStudent();
             var result = _repository.getAllStudent();
             return View(result);
         }
@@ -30,6 +33,7 @@ namespace TrainingMVCAppWithTemplate.Controllers
         public ActionResult Details(int id)
         {
             //StudentRepository studentRepository = new StudentRepository();
+            //var result = studentRepository.getStudentById(id);
             var result = _repository.getStudentById(id);
             return View(result);
         }

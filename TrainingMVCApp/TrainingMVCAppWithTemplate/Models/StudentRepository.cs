@@ -7,6 +7,10 @@ namespace TrainingMVCAppWithTemplate.Models
 {
     public class StudentRepository:IStudentRepository
     {
+        public StudentRepository()
+        { 
+        }
+
         List<Student> Data = new List<Student>()
             {
                 new Student() { StudentId = 101, Name = "Ravi", Branch = "CSE", Section = "A", Gender = "Male" },

@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainingMVCAppWithTemplate"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMVCProject", "MyMVCProject\MyMVCProject.csproj", "{F50B504C-D3DA-4C2C-8AB0-4D9BE5380702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMVCProject.DAL", "MyMVCProject.DAL\MyMVCProject.DAL.csproj", "{04400D1C-EE20-41E6-AB36-E47DDAD7A289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMVCProject.DAL", "MyMVCProject.DAL\MyMVCProject.DAL.csproj", "{04400D1C-EE20-41E6-AB36-E47DDAD7A289}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstProject.Services", "MyFirstProject.Services\MyFirstProject.Services.csproj", "{5C8D15A1-057D-44AC-BE80-6FF26DE8993F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstProject.Services", "MyFirstProject.Services\MyFirstProject.Services.csproj", "{5C8D15A1-057D-44AC-BE80-6FF26DE8993F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

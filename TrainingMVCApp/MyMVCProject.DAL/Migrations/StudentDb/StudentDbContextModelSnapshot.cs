@@ -19,6 +19,44 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MyMVCProject.DAL.Data.AppUser", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MyMVCProject.DAL.Data.Book", b =>
                 {
                     b.Property<int>("Id")
@@ -91,6 +129,30 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                     b.ToTable("Books");
                 });
 
+            modelBuilder.Entity("MyMVCProject.DAL.Data.Doctor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Specialization")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YOE")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Doctor");
+                });
+
             modelBuilder.Entity("MyMVCProject.DAL.Data.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -136,6 +198,15 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                     b.HasIndex("StudentId");
 
                     b.ToTable("StudentInfo");
+                });
+
+            modelBuilder.Entity("MyMVCProject.DAL.Data.Doctor", b =>
+                {
+                    b.HasOne("MyMVCProject.DAL.Data.AppUser", "User")
+                        .WithMany("Doctor")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyMVCProject.DAL.Data.StudentInfo", b =>

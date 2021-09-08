@@ -61,6 +61,26 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    Role = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StudentInfo",
                 columns: table => new
                 {
@@ -84,6 +104,32 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Doctor",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(nullable: false),
+                    Specialization = table.Column<string>(nullable: false),
+                    YOE = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Doctor", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Doctor_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Doctor_UserID",
+                table: "Doctor",
+                column: "UserID");
+
             migrationBuilder.CreateIndex(
                 name: "IX_StudentInfo_StudentId",
                 table: "StudentInfo",
@@ -99,7 +145,13 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                 name: "Booksa");
 
             migrationBuilder.DropTable(
+                name: "Doctor");
+
+            migrationBuilder.DropTable(
                 name: "StudentInfo");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Student");
