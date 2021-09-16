@@ -18,8 +18,8 @@ namespace MyMVCProject.DAL.Data
 
     public class StudentDbContext : DbContext
     {
-        //public StudentDbContext()
-        //{ }
+        public StudentDbContext()
+        { }
         public StudentDbContext(DbContextOptions<StudentDbContext> options)
             : base(options)
         {
@@ -31,16 +31,16 @@ namespace MyMVCProject.DAL.Data
         public DbSet<StudentInfo> StudentInfo { get; set; }
         public DbSet<AppUser> AppUser { get; set; }
         public DbSet<Doctor> Doctor { get; set; }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
 
-        //    if (!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
 
-        //    {
-        //        optionsBuilder.UseSqlServer("Server=.;Database=MyMVCProjecta;Trusted_Connection=True;MultipleActiveResultSets=true");
-        //    }
+            {
+                optionsBuilder.UseSqlServer("Server=.;Database=MyMVCProjecta;Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
 
-        //}
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StudentInfo>(entity =>
