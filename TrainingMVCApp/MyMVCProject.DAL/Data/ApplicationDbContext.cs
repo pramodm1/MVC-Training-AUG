@@ -31,6 +31,7 @@ namespace MyMVCProject.DAL.Data
         public DbSet<StudentInfo> StudentInfo { get; set; }
         public DbSet<AppUser> AppUser { get; set; }
         public DbSet<Doctor> Doctor { get; set; }
+        public DbSet<VoterInfo> VoterInfo { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

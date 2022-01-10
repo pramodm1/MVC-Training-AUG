@@ -14,7 +14,9 @@ namespace MyMVCProject.DAL.Data
             StudentInfo = new HashSet<StudentInfo>();
         }
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        public string LastName { get; set; }
 
         [InverseProperty("Student")]
         public virtual ICollection<StudentInfo> StudentInfo { get; set; }
