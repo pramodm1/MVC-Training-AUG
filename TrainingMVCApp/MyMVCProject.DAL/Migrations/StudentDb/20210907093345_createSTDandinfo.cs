@@ -134,6 +134,33 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
                 name: "IX_StudentInfo_StudentId",
                 table: "StudentInfo",
                 column: "StudentId");
+
+            migrationBuilder.CreateTable(
+                name: "Course",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false).Annotation("Sqlserver:Identity", "1,1"),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<int>(nullable: false),
+                });
+
+             migrationBuilder.CreateTable(
+                name: "CourseMaster",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false).Annotation("Sqlserver:Identity", "1,1"),
+                    Name = table.Column<string>(nullable: false),                
+                    IsActive = table.Column<bool>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<int>(nullable: false),
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -155,6 +182,8 @@ namespace MyMVCProject.DAL.Migrations.StudentDb
 
             migrationBuilder.DropTable(
                 name: "Student");
+            migrationBuilder.DropTable(
+                name: "Course");
         }
     }
 }

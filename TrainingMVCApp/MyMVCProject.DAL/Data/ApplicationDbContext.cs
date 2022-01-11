@@ -32,13 +32,15 @@ namespace MyMVCProject.DAL.Data
         public DbSet<AppUser> AppUser { get; set; }
         public DbSet<Doctor> Doctor { get; set; }
         public DbSet<VoterInfo> VoterInfo { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<CourseMaster> CourseMaster { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
             if (!optionsBuilder.IsConfigured)
 
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=MyMVCProjecta;Trusted_Connection=True;MultipleActiveResultSets=true");
+                optionsBuilder.UseSqlServer("Server=.;Database=CMS;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
 
         }

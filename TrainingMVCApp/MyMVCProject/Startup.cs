@@ -39,6 +39,7 @@ namespace MyMVCProject
             services.AddDbContext<StudentDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IBooksService, BooksService>();
+            services.AddTransient<ICourseService, CourseService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
